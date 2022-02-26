@@ -1,0 +1,12 @@
+# Mac shit
+.DS_Store
+
+# Output
+*.pdf
+*.aux
+*.log
+*.gz
+*.toc
+
+# Vim shit
+*.sw?

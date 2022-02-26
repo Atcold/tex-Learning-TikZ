@@ -1,0 +1,6 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\fbox{Before \tikz[baseline=-2pt]{\draw[->] (0,0) -- (2,0) node [midway, anchor=south] {time};} after.}
+% \fbox{Before \tikz[baseline=-3pt]{\draw[->] (0,0) -- (1,0) node [anchor=west] {test};} after.}
+\end{document}

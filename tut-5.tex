@@ -1,0 +1,67 @@
+\section*{Tutorial 5}
+
+\noindent
+\begin{tikzpicture}[
+  node distance=5mm,
+  text height=1.4ex,text depth=.25ex,
+]
+%   \node[nonterminal] {unsigned integer};
+  \node (ui1)   [nonterminal]             {unsigned integer};
+  \node (dot)   [terminal,right=of ui1]                {.};
+  \node (digit) [terminal,right=of dot]   {digit};
+  \node (E)     [terminal,right=of digit] {E};
+  \node (plus)  [terminal,above right=of E,xshift=5mm] {+};
+  \node (minum) [terminal,below right=of E,xshift=5mm] {-};
+  \node (ui2)   [nonterminal,below right=of plus,xshift=5mm] {unsigned integer};
+\end{tikzpicture}
+
+\noindent
+\begin{tikzpicture}[
+  point/.style={circle,inner sep=0pt,minimum size=2pt,fill=red},
+%   text height=1.4ex,text depth=.25ex,
+]
+  \matrix[row sep=1mm,column sep=2mm]{
+    % First row
+    &&&&&&&&&&& \node (plus)  [terminal] {+}; \\
+    % Second row
+    \node (p1) [point] {}; & \node (ui1)   [nonterminal] {unsigned integer}; &
+    \node (p2) [point] {}; & \node (dot)   [terminal]                {.}; &
+    \node (p3) [point] {}; & \node (digit) [terminal]   {digit}; &
+    \node (p4) [point] {}; & \node (p1) [point] {}; & 
+    \node (p6) [point] {}; & \node (E)     [terminal] {E}; &
+    \node (p7) [point] {}; &  &
+    \node (p8) [point] {}; & \node (ui2)   [nonterminal] {unsigned integer}; &
+    \node (p9) [point] {}; & \node (p10) [point] {}; \\ 
+    % Third row
+    &&&&&&&&&&& \node (minus)  [terminal] {-}; \\
+  };
+\end{tikzpicture}
+
+\noindent
+\usetikzlibrary{graphs}
+\begin{tikzpicture}[
+  point/.style={circle,inner sep=0pt,minimum size=2pt,fill=red},
+%   text height=1.4ex,text depth=.25ex,
+  skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget))}},
+]
+  \matrix[row sep=1mm,column sep=2mm]{
+    % First row
+    &&&&&&&&&&& \node (plus)  [terminal] {+}; \\
+    % Second row
+    \node (p1) [point] {}; & \node (ui1)   [nonterminal] {unsigned integer}; &
+    \node (p2) [point] {}; & \node (dot)   [terminal] {.}; &
+    \node (p3) [point] {}; & \node (digit) [terminal] {digit}; &
+    \node (p4) [point] {}; & \node (p5)    [point]    {}; & 
+    \node (p6) [point] {}; & \node (E)     [terminal] {E}; &
+    \node (p7) [point] {}; &  &
+    \node (p8) [point] {}; & \node (ui2)   [nonterminal] {unsigned integer}; &
+    \node (p9) [point] {}; & \node (p10) [point] {}; \\ 
+    % Third row
+    &&&&&&&&&&& \node (minus)  [terminal] {-}; \\
+  };
+  \graph{
+    (p1) -> (ui1) -- (p2) -> (dot) -- (p3) -> (digit) -- (p4) -- (p5) -- (p6)
+         -> (E)   -- (p7) -- (p8)  -> (ui2) -- (p9) -> (p10);
+    (p4) -> [skip loop=-5mm] (p3);
+  };
+\end{tikzpicture}

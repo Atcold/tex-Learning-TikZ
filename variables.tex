@@ -1,0 +1,11 @@
+\documentclass{standalone}\usepackage{tikz}\begin{document}
+\def\a{5}
+\texttt{print(a = \a)}
+
+\begin{tikzpicture}
+\def\a{7}
+\node (0, 0) {Inside TikZ a = \a.};
+\end{tikzpicture}
+
+Finally, outside a = \a.
+\end{document}

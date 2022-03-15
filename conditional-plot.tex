@@ -1,0 +1,24 @@
+\documentclass{minimal}
+\usepackage{pgfplots}
+\begin{document}
+  % Deactivate indentation
+  \setlength{\parindent}{0pt}
+
+  % Defining flags
+  \newif\ifA\newif\ifB\newif\ifC
+
+  % Activate A only
+  Describing plot A.
+
+  \Atrue\input{plot}  % A
+
+  % Activate also B
+  Describing plot A \& B.
+
+  \Btrue\input{plot}  % A & B
+
+  % Activate also C
+  Describing plot A \& B \& C.
+
+  \Ctrue\input{plot}  % A & B & C
+\end{document}

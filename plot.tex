@@ -1,0 +1,11 @@
+\vspace{1ex}
+\begin{tikzpicture}
+  \begin{axis}[width=5cm]
+    \pgfplotsset{
+      every axis plot post/.style={domain=0:360, samples=101, mark=none}
+    }
+    \ifA\addplot {sin(1*x)/1};\fi
+    \ifB\addplot {sin(2*x)/2};\fi
+    \ifC\addplot {sin(3*x)/3};\fi
+  \end{axis}
+\end{tikzpicture}

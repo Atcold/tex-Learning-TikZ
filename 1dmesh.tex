@@ -1,0 +1,6 @@
+\documentclass{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=newest}
+\begin{document}\begin{tikzpicture}\begin{axis}
+  \addplot [mesh,line width=20pt,domain=-1:1,samples=101] {sin(360*x)*x)};
+  \addplot [no marks,line width=20pt,domain=-1:1,samples=101] {sin(360*x)*x-1};
+\end{axis}\end{tikzpicture}\end{document}

@@ -1,0 +1,26 @@
+\documentclass[border=5mm]{minimal}
+\usepackage{printlen}\usepackage{tikz}
+\showoutput
+\begin{document}
+\setlength{\parindent}{0pt}
+\newlength\h \h=\baselineskip
+
+\textcolor{cyan}{
+Writing some\\
+text over\\
+multiple lines.}
+
+Writing some \tikz[baseline=\h/3]{
+\draw (0,0) rectangle (\h,\h);
+\draw (0,0) rectangle (\h,\h/3);
+\draw (0,2/3*\h) rectangle ++(\h,\h/3);
+}\\
+text over \tikz[baseline=\h/3]{\draw (0,0) rectangle (\h,\h);}\\
+multiple lines.
+
+% Try \printlen{\ht\strutbox}.
+\newlength\mylen
+% \mylen = \ht\strutbox
+\settoheight{\mylen}{\strutbox}
+\the\mylen
+\end{document}

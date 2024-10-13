@@ -1,0 +1,50 @@
+\documentclass[border=5mm]{minimal}
+\usepackage{pgfplots}\pgfplotsset{compat=newest}
+
+% Colourmap visualiser
+\def\pgfplotsshowcolormap#1{%
+    \pgfplotscolormapifdefined{#1}{\relax}{%
+        \pgfplotsset{colormap/#1}%
+    }%
+    \pgfplotscolormaptoshadingspec{#1}{8cm}\result
+    \def\tempb{\pgfdeclarehorizontalshading{tempshading}{1cm}}%
+    \expandafter\tempb\expandafter{\result}%
+    \pgfuseshading{tempshading}%
+}
+
+\pgfkeys{%
+	/pgfplots/colormap/coolwarm/.style={%
+		/pgfplots/colormap={coolwarm}{%
+			rgb=(0.2298057 , 0.29871797, 0.75368315)
+			rgb=(0.29944126, 0.40024818, 0.83984198)
+			rgb=(0.37355243, 0.49749871, 0.90946737)
+			rgb=(0.45173856, 0.58818099, 0.96020127)
+			rgb=(0.53256824, 0.6698006 , 0.99039327)
+			rgb=(0.61393265, 0.73992298, 0.99914237)
+			rgb=(0.69332128, 0.79631413, 0.98630778)
+			rgb=(0.76803436, 0.83703522, 0.95248822)
+			rgb=(0.83534471, 0.860514  , 0.89897041)
+			rgb=(0.89588177, 0.84990606, 0.82349908)
+			rgb=(0.94087894, 0.8055964 , 0.73516656)
+			rgb=(0.96483536, 0.74461367, 0.64323888)
+			rgb=(0.96810534, 0.6684752 , 0.55048622)
+			rgb=(0.95125379, 0.57879939, 0.45940781)
+			rgb=(0.91515712, 0.47692653, 0.37217941)
+			rgb=(0.8610536 , 0.36291576, 0.29062813)
+			rgb=(0.79056153, 0.231397  , 0.21624204)
+			rgb=(0.70567316, 0.01555616, 0.15023281)
+		}%
+	},
+}
+
+\begin{document}
+\strut{}Colormap \texttt{viridis}.
+
+% \pgfplotsset{colormap name=viridis}
+\pgfplotsshowcolormap{viridis}
+
+\strut{}Colormap \texttt{coolwarm}.
+
+% \pgfplotsset{colormap name=coolwarm}
+\pgfplotsshowcolormap{coolwarm}
+\end{document}
